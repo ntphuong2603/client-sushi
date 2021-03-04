@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
-import { LinkContainer } from 'react-router-bootstrap'
-import { AppBar, Button, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import LeftDrawer from './leftDrawer'
-import { handleDrawer } from '../store/actions/actionIndex'
-import NotificationsIcon from '@material-ui/icons/Notifications'
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive'
+import { AppBar, Backdrop, Button, CircularProgress, makeStyles, Toolbar, Typography } from '@material-ui/core'
+import { withRouter } from 'react-router-dom'
+import LogoutDialog from './dialog/logoutDialog'
+import LoginDialog from './dialog/loginDialog'
+import MenuMobile from './menuMobile'
 
-const Header = () => {
+const Header = (props) => {
     const {isDrawerOpen, drawerWidth} = useSelector(state=>state.sites)
+    const [openDialog, setOpenDialog] = useState(false)
+    const [showBackdrop, setShowBackdrop] = useState(false)
+    
+    
     const notifications = useSelector(state=>state.notifications)
+    const {auth} = useSelector(state=>state.users)
     const dispatch = useDispatch()
 
     const styles = makeStyles((theme)=>({
@@ -46,26 +49,36 @@ const Header = () => {
     }))
 
     const classes = styles()
-
+    
+    useEffect(()=>{
+        setShowBackdrop(false)
+        if (notifications && notifications.error){
+            setOpenDialog(true)
+        }
+    },[notifications])
+    console.log('Header:',props);
     return(
         <div className={classes.root}>
-            <LeftDrawer/>
-            <AppBar position="static" className={clsx(classes.appBar, {[classes.appBarShift] : isDrawerOpen})}>
+            <AppBar position="sticky" className={clsx(classes.appBar, {[classes.appBarShift] : isDrawerOpen})}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={()=>{dispatch(handleDrawer(isDrawerOpen))}}>
-                        <MenuIcon/>
-                    </IconButton>
-                    <Typography variant="h5" className={classes.title}>Mr. Sushi PEI</Typography>
-                    <IconButton color="inherit">
-                        <NotificationsIcon/>
-                    </IconButton>
-                    <LinkContainer to="/login" className={classes.hoverButton}>
-                        <Button color="inherit">Login</Button>
-                    </LinkContainer>
+                    <Typography button variant="h5" className={classes.title} onClick={()=>props.history.push("/")}>Mr. Sushi PEI</Typography>
+                    {!auth ? 
+                        <Button color="inherit" onClick={()=>setOpenDialog(!openDialog)}>Login</Button>
+                    :
+                        <MenuMobile/>
+                    }
                 </Toolbar>
             </AppBar>
+            <Backdrop open={showBackdrop}>
+                <CircularProgress color="secondary" />
+            </Backdrop>
+            {!auth ? 
+                <LoginDialog openDialog={openDialog} setOpenDialog={setOpenDialog} setShowBackdrop={setShowBackdrop}/>
+            :
+                <LogoutDialog  openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+            }
         </div>
     )
 }
 
-export default Header
+export default withRouter(Header)

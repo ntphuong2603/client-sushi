@@ -7,6 +7,7 @@ import MainLayout from './components/hoc/mainLayout'
 import Login from './components/login'
 import Order from './components/order'
 import Menu from './components/menu'
+import Dashboard from './components/dashboard'
 
 import('bootstrap/dist/css/bootstrap.min.css')
 
@@ -16,9 +17,10 @@ const Routes = () => {
             <Header/>
             <MainLayout>
                 <Switch>
-                    <Route path="/login" component={Login}/>
+                    {/* <Route path="/login" component={Login}/> */}
                     <Route path="/orders" component={Order}/>
                     <Route path="/menus" component={Menu}/>
+                    <Route path="/dashboard" component={Dashboard}/>
                     <Route path="/" component={Home}/>
                 </Switch>
             </MainLayout>

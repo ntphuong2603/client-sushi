@@ -44,9 +44,9 @@ const LeftDrawer = () => {
                     <ChevronLeftIcon/>
                 </IconButton>
             </div>
+            <Divider/>
             {drawerMenu.map((menu,index)=>(
                 <>
-                    <Divider/>
                     <List key={menu}>
                         <ListItem button component={RouterLink} to={`/${menu}`} className={classes.hoverButton}>
                             <ListItemIcon>{menuIcons[index]}</ListItemIcon>

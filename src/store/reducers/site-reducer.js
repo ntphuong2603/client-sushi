@@ -2,7 +2,7 @@ import { SITE_ACTIONS } from "../actionTypes";
 
 const INIT_STATE = {
     drawerWidth: 175,
-    isDrawerOpen: true,
+    isDrawerOpen: false,
 }
 
 export default function sitesReducer(state=INIT_STATE,action){

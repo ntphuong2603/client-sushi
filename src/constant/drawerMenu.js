@@ -10,3 +10,9 @@ export const drawerMenu = [
 export const menuIcons = [
     <ListAltIcon/>,<RestaurantMenuIcon/>,<DescriptionIcon/>,<PeopleAltIcon/>
 ]
+
+export const MENU_BAR = [
+    'orders','menus','reports','users'
+]
+
+export const MENU_ICON = menuIcons
