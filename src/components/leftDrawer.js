@@ -1,12 +1,11 @@
 import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles } from '@material-ui/core'
 import React from 'react'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu'
-import ListAltIcon from '@material-ui/icons/ListAlt'
-import DescriptionIcon from '@material-ui/icons/Description'
 import { useDispatch, useSelector } from 'react-redux'
 import { handleDrawer } from '../store/actions/actionIndex'
 import {Link as RouterLink} from 'react-router-dom'
+import { drawerMenu, menuIcons } from '../constant/drawerMenu'
+import { getSentenceCase } from '../tools/stringFunc'
 
 const LeftDrawer = () => {
     const { isDrawerOpen, drawerWidth } = useSelector(state=>state.sites)
@@ -45,28 +44,19 @@ const LeftDrawer = () => {
                     <ChevronLeftIcon/>
                 </IconButton>
             </div>
+            {drawerMenu.map((menu,index)=>(
+                <>
+                    <Divider/>
+                    <List key={menu}>
+                        <ListItem button component={RouterLink} to={`/${menu}`} className={classes.hoverButton}>
+                            <ListItemIcon>{menuIcons[index]}</ListItemIcon>
+                            <ListItemText primary={getSentenceCase(menu)}/>
+                        </ListItem>
+                    </List>
+                </>
+            ))}
             <Divider/>
-            <List>
-                <ListItem button component={RouterLink} to="/orders" className={classes.hoverButton}>
-                    <ListItemIcon className={classes.hoverButton}><ListAltIcon/></ListItemIcon>
-                    <ListItemText primary={'Orders'}/>
-                </ListItem>
-            </List>
-            <Divider/>
-            <List>
-                <ListItem button component={RouterLink} to="/menus" className={classes.hoverButton}>
-                    <ListItemIcon><RestaurantMenuIcon/></ListItemIcon>
-                    <ListItemText primary={'Menus'}/>
-                </ListItem>
-            </List>
-            <Divider/>
-            <List>
-                <ListItem button component={RouterLink} to="/reports" className={classes.hoverButton}>
-                    <ListItemIcon><DescriptionIcon/></ListItemIcon>
-                    <ListItemText primary={'Reports'}/>
-                </ListItem>
-            </List>
-            <Divider/>
+            
         </Drawer>
     )
 }
