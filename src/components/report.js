@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { userAuthenticate } from '../store/actions/user-action'
 
-const Dashboard = () => {
+const Report = () => {
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -11,9 +11,9 @@ const Dashboard = () => {
 
     return(
         <div>
-            Dashboard component.
+            Report component.
         </div>
     )
 }
 
-export default Dashboard;
+export default Report;

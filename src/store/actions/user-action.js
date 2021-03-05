@@ -5,7 +5,7 @@ const USER_URL = 'http://localhost:5000/api/users'
 
 
 export function userRegister({email, password}) {
-    return async(dispatch, getState)=>{
+    return async(dispatch)=>{
         try {
             const user = await axios.post(`${USER_URL}/register`,{
                 email:email,
@@ -16,7 +16,7 @@ export function userRegister({email, password}) {
                 dispatch(userAction.successNotification('Welcome to MATRIX, please check email to active your account'))
             } 
         } catch (error){
-            console.log(error.response.data.message);
+            // console.log(error.response.data.message);
             dispatch(userAction.errorNotification(error.response.data.message))
         }
         
@@ -39,7 +39,7 @@ export function userLogin({email, password, rememberMe}) {
                 dispatch(userAction.successNotification("Login successfully"))
             }
         } catch (error){
-            console.log(error);
+            // console.log(error);
             dispatch(userAction.errorNotification())
         }
     }
@@ -61,12 +61,22 @@ export function userLogout(props) {
     }
 }
 
-export function userAuthenticate({token}) {
-    return async(dispatch, getState)=>{
+export function userAuthenticate(props) {
+    return async(dispatch)=>{
         try {
             //get token from localStorage
+            const headers = tokenHandling.getHeader("my-access-token")
+            // console.log('Headers:', headers);
+            const response = await axios.get(`${USER_URL}/isUserAuthenticate`, headers)
+            console.log('Authenticate user: ',response);
+            if (response.data.data.error){
+                dispatch(userAction.userAuthenticate({auth: false}))
+                props.history.push('/')
+            }
+            dispatch(userAction.userAuthenticate({data: response.data.data, auth: true}))
         } catch (error){
-            
+            console.log('Error:', error);
+            dispatch(userAction.userAuthenticate({auth: false}))
         }
     }
 }

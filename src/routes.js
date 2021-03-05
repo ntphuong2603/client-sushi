@@ -4,10 +4,14 @@ import GoogleFontLoader from 'react-google-font-loader'
 import Header from './components/header'
 import Home from './components/home'
 import MainLayout from './components/hoc/mainLayout'
-import Login from './components/login'
+// import Login from './components/login'
 import Order from './components/order'
 import Menu from './components/menu'
 import Dashboard from './components/dashboard'
+import User from './components/user'
+import Report from './components/report'
+import AuthRoute from './components/hoc/authComponent'
+import Profile from './components/profile'
 
 import('bootstrap/dist/css/bootstrap.min.css')
 
@@ -18,9 +22,16 @@ const Routes = () => {
             <MainLayout>
                 <Switch>
                     {/* <Route path="/login" component={Login}/> */}
-                    <Route path="/orders" component={Order}/>
+                    {/* <Route path="/orders" component={Order}/>
                     <Route path="/menus" component={Menu}/>
-                    <Route path="/dashboard" component={Dashboard}/>
+                    <Route path="/reports" component={Report}/>
+                    <Route path="/users" component={User}/> */}
+                    <AuthRoute path="/orders" component={Order}/>
+                    <AuthRoute path="/menus" component={Menu}/>
+                    <AuthRoute path="/reports" component={Report}/>
+                    <AuthRoute path="/users" component={User}/>
+                    <AuthRoute path="/profile" component={Profile}/>
+                    <AuthRoute path="/dashboard" component={Dashboard}/>
                     <Route path="/" component={Home}/>
                 </Switch>
             </MainLayout>

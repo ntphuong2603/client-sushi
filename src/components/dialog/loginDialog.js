@@ -15,7 +15,7 @@ const LoginDialog = (props) => {
             password:Yup.string().required("Password is required")
         }),
         onSubmit(values, {resetForm}){
-            console.log("Values:",values);
+            // console.log("Values:",values);
             dispatch(userLogin(values))
             props.setOpenDialog(!props.openDialog)
             props.setShowBackdrop(true);

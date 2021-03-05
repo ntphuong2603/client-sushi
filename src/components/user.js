@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { userAuthenticate } from '../store/actions/user-action'
 
-const Dashboard = () => {
+const User = () => {
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -10,10 +10,12 @@ const Dashboard = () => {
     },[])
 
     return(
-        <div>
-            Dashboard component.
-        </div>
+        <>
+            {/* {auth && "User component."}
+            {!auth && <Redirect to="/"/>} */}
+            User component.
+        </>
     )
 }
 
-export default Dashboard;
+export default User;

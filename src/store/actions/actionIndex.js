@@ -1,4 +1,4 @@
-import { NOTIFICATION_ACTIONS, SITE_ACTIONS, USER_ACTIONS } from "../actionTypes";
+import { MENU_ACTIONS, NOTIFICATION_ACTIONS, SITE_ACTIONS, USER_ACTIONS } from "../actionTypes";
 
 ///////////////////////// - Drawer actions - /////////////////////////
 export const handleDrawer = (isDrawerOpen) => ({
@@ -57,3 +57,27 @@ export const userAuthenticate = (values) => ({
 })
 
 ///////////////////////// - Menu actions - /////////////////////////
+export const getAllMenus = (values) => ({
+    type: MENU_ACTIONS.GET_ALL_MENUS,
+    payload: values,
+})
+
+export const getMenuByID = (values) => ({
+    type: MENU_ACTIONS.GET_MENU_BY_ID,
+    payload: values,
+})
+
+export const creatMneu = (values) => ({
+    type: MENU_ACTIONS.CREATE_MENU,
+    payload: values,
+})
+
+export const updateMenu = (values) => ({
+    type: MENU_ACTIONS.UPDATE_MENU,
+    payload: values,
+})
+
+export const deleteMenu = (values) => ({
+    type: MENU_ACTIONS.DELETE_MENU,
+    payload: values,
+})

@@ -20,3 +20,10 @@ export function removeToken(token) {
     }
     return false
 }
+
+export function getHeader(tokenName){
+    // const tokenValue = getToken(tokenName)
+    return {headers:{
+        [tokenName]: getToken(tokenName)
+    }}
+}
