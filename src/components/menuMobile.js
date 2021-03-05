@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles, Popover } from '@material-ui/core'
 import { MENU_BAR, MENU_ICON } from '../constant/drawerMenu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import MenuIcon from '@material-ui/icons/Menu'
 import {Link as RouterLink} from 'react-router-dom'
 import { getSentenceCase } from '../tools/stringFunc'
 
@@ -22,7 +23,7 @@ const styles = makeStyles((theme)=>({
     }
 }))
 
-const MenuMobile = () => {
+const MenuMobile = (props) => {
     const [anchorEle, setAnchorEle] = useState(null)
     const [menuID, setMenuID] = useState(null)
     
@@ -76,6 +77,9 @@ const MenuMobile = () => {
                 ))}
             </List>
         </Popover>
+        <IconButton color="inherit" onClick={()=>{props.setOpenDialog(!props.openDialog)}}>
+            <ExitToAppIcon/>
+        </IconButton>
         </>
     )
 }

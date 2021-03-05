@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import GoogleFontLoader from 'react-google-font-loader'
 import Header from './components/header'
@@ -12,20 +12,28 @@ import User from './components/user'
 import Report from './components/report'
 import AuthRoute from './components/hoc/authComponent'
 import Profile from './components/profile'
+import { useDispatch } from 'react-redux'
+import { userAuthenticate } from './store/actions/user-action'
 
 import('bootstrap/dist/css/bootstrap.min.css')
 
 const Routes = () => {
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(userAuthenticate())
+    },[])
+
     return(
         <BrowserRouter>
             <Header/>
             <MainLayout>
                 <Switch>
                     {/* <Route path="/login" component={Login}/> */}
-                    {/* <Route path="/orders" component={Order}/>
-                    <Route path="/menus" component={Menu}/>
-                    <Route path="/reports" component={Report}/>
-                    <Route path="/users" component={User}/> */}
+                    {/* <Route path="/orders" component={Order}/> */}
+                    {/* <Route path="/menus" component={Menu}/> */}
+                    {/* <Route path="/reports" component={Report}/> */}
+                    {/* <Route path="/users" component={User}/> */}
                     <AuthRoute path="/orders" component={Order}/>
                     <AuthRoute path="/menus" component={Menu}/>
                     <AuthRoute path="/reports" component={Report}/>

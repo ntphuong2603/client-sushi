@@ -28,16 +28,17 @@ const LoginDialog = (props) => {
     })
 
     return(
-        <Dialog open={props.openDialog} onClose={()=>{props.setOpenDialog(!props.openDialog)}} >
-            <DialogTitle>
+        <Dialog open={props.openDialog} onClose={()=>{props.setOpenDialog(!props.openDialog)}} maxWidth="sm">
+            <DialogTitle onClose={()=>{props.setOpenDialog(!props.openDialog)}}>
                 <Typography component="h1" variant="h5">
                     Login
                 </Typography>
             </DialogTitle>
-            <DialogContent dividers>
+            <DialogContent>
                 <TextField
                     variant="outlined"
                     margin="normal"
+                    // width="xs"
                     fullWidth
                     label="Email"
                     name="email"
@@ -63,10 +64,10 @@ const LoginDialog = (props) => {
                 />
             </DialogContent>
             <DialogActions>
-                <Button onClick={formik.handleSubmit} color="secondary" variant="outlined">
+                <Button fullWidth size="large" onClick={formik.handleSubmit} color="secondary" variant="contained">
                     Login
                 </Button>
-                <Button onClick={()=>{props.setOpenDialog(!props.openDialog)}} color="primary" variant="outlined">
+                <Button fullWidth size="large" onClick={()=>{props.setOpenDialog(!props.openDialog)}} color="primary" variant="outlined">
                     Cancel
                 </Button>
             </DialogActions>

@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { userAuthenticate } from '../store/actions/user-action'
 
 const Order = () => {
-    const dispatch = useDispatch()
+    // const {auth} = useSelector(state=>state.users)
+    // const dispatch = useDispatch()
 
-    useEffect(()=>{
-        dispatch(userAuthenticate())
-    },[])
+    // useEffect(()=>{
+    //     dispatch(userAuthenticate())
+    // },[])
 
     return(
         <>

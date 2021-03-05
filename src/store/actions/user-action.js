@@ -40,28 +40,27 @@ export function userLogin({email, password, rememberMe}) {
             }
         } catch (error){
             // console.log(error);
-            dispatch(userAction.errorNotification())
+            dispatch(userAction.errorNotification('Email or password is incorrect, please check again!'))
         }
     }
 }
 
-export function userLogout(props) {
+export function userLogout() {
     return async(dispatch)=>{
         try {
             //clear token in localStorage
             tokenHandling.removeToken("my-access-token")
             dispatch(userAction.userLogout())
-            dispatch(userAction.closeDrawer())
             dispatch(userAction.infoNotification('Logout successfully'))
             //return to homepage
-            props.history.push('/')
+            // props.history.push('/')
         } catch (error){
             dispatch(userAction.errorNotification(""))
         }
     }
 }
 
-export function userAuthenticate(props) {
+export function userAuthenticate() {
     return async(dispatch)=>{
         try {
             //get token from localStorage
@@ -71,12 +70,13 @@ export function userAuthenticate(props) {
             console.log('Authenticate user: ',response);
             if (response.data.data.error){
                 dispatch(userAction.userAuthenticate({auth: false}))
-                props.history.push('/')
+                // props.history.push('/')
             }
             dispatch(userAction.userAuthenticate({data: response.data.data, auth: true}))
         } catch (error){
-            console.log('Error:', error);
+            // console.log('Error:', error);
             dispatch(userAction.userAuthenticate({auth: false}))
+            // dispatch(userAction.errorNotification())
         }
     }
 }

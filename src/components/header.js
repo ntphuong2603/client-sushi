@@ -55,7 +55,7 @@ const Header = (props) => {
                 <Toolbar>
                     <Typography button variant="h5" className={classes.title} onClick={()=>props.history.push("/")}>Mr. Sushi PEI</Typography>
                     {auth ? 
-                        <MenuMobile/>
+                        <MenuMobile openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                     :
                         <Button color="inherit" onClick={()=>setOpenDialog(!openDialog)}>Login</Button>
                     }
