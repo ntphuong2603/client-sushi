@@ -11,8 +11,6 @@ const User = () => {
 
     return(
         <>
-            {/* {auth && "User component."}
-            {!auth && <Redirect to="/"/>} */}
             User component.
         </>
     )

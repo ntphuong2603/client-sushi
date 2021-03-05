@@ -9,10 +9,10 @@ const Dashboard = () => {
         dispatch(userAuthenticate())
     },[])
 
-    return(
-        <div>
-            Dashboard component.
-        </div>
+    return (
+        <>
+            Dashboard component
+        </>
     )
 }
 

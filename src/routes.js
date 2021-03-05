@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import GoogleFontLoader from 'react-google-font-loader'
 import Header from './components/header'
@@ -10,36 +10,26 @@ import Menu from './components/menu'
 import Dashboard from './components/dashboard'
 import User from './components/user'
 import Report from './components/report'
-import AuthRoute from './components/hoc/authComponent'
 import Profile from './components/profile'
-import { useDispatch } from 'react-redux'
-import { userAuthenticate } from './store/actions/user-action'
+import { useSelector } from 'react-redux'
 
 import('bootstrap/dist/css/bootstrap.min.css')
 
 const Routes = () => {
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        dispatch(userAuthenticate())
-    },[])
-
+    const {auth} = useSelector(state=>state.users)
     return(
         <BrowserRouter>
             <Header/>
             <MainLayout>
                 <Switch>
-                    {/* <Route path="/login" component={Login}/> */}
-                    {/* <Route path="/orders" component={Order}/> */}
-                    {/* <Route path="/menus" component={Menu}/> */}
-                    {/* <Route path="/reports" component={Report}/> */}
-                    {/* <Route path="/users" component={User}/> */}
-                    <AuthRoute path="/orders" component={Order}/>
-                    <AuthRoute path="/menus" component={Menu}/>
-                    <AuthRoute path="/reports" component={Report}/>
-                    <AuthRoute path="/users" component={User}/>
-                    <AuthRoute path="/profile" component={Profile}/>
-                    <AuthRoute path="/dashboard" component={Dashboard}/>
+                    {auth && <>
+                        <Route path="/orders" component={Order}/>
+                        <Route path="/menus" component={Menu}/>
+                        <Route path="/reports" component={Report}/>
+                        <Route path="/users" component={User}/>
+                        <Route path="/profile" component={Profile}/>
+                        <Route path="/dashboard" component={Dashboard}/>
+                    </>}
                     <Route path="/" component={Home}/>
                 </Switch>
             </MainLayout>

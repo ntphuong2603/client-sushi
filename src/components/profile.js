@@ -1,13 +1,6 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { userAuthenticate } from '../store/actions/user-action'
+import React from 'react'
 
 const Profile = () => {
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        dispatch(userAuthenticate())
-    },[])
 
     return(
         <div>

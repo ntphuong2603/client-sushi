@@ -9,7 +9,6 @@ import { NOTIFICATION_ACTIONS } from '../../store/actionTypes'
 
 
 const MainLayout = (props) => {
-    // const {isDrawerOpen, drawerWidth} = useSelector(state=>state.sites)
     const notifications = useSelector(state=>state.notifications)
     const dispatch = useDispatch()
     
@@ -18,20 +17,6 @@ const MainLayout = (props) => {
             display:'flex',
             padding: theme.spacing(2),
         },
-        // content: {
-        //     transition: theme.transitions.create('margin', {
-        //       easing: theme.transitions.easing.sharp,
-        //       duration: theme.transitions.duration.leavingScreen,
-        //     }),
-        //     marginLeft: 0,
-        // },
-        // contentShift: {
-        //     transition: theme.transitions.create('margin', {
-        //         easing: theme.transitions.easing.easeOut,
-        //         duration: theme.transitions.duration.enteringScreen,
-        //     }),
-        //     marginLeft: drawerWidth,
-        // },
     }))
 
     const classes = styles()
@@ -55,7 +40,6 @@ const MainLayout = (props) => {
     },[notifications, dispatch])
 
     return(
-        // <div className={clsx(classes.root, classes.content,isDrawerOpen ? classes.contentShift : null)}>
         <div className={classes.root}>
             <Container>
                 {props.children}
