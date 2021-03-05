@@ -15,7 +15,7 @@ const Header = (props) => {
     
     const notifications = useSelector(state=>state.notifications)
     const {auth} = useSelector(state=>state.users)
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     const styles = makeStyles((theme)=>({
         root:{
@@ -56,7 +56,7 @@ const Header = (props) => {
             setOpenDialog(true)
         }
     },[notifications])
-    console.log('Header:',props);
+
     return(
         <div className={classes.root}>
             <AppBar position="sticky" className={clsx(classes.appBar, {[classes.appBarShift] : isDrawerOpen})}>

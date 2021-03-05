@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core'
+import { Container, makeStyles } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import { useDispatch, useSelector } from 'react-redux'
@@ -57,7 +57,9 @@ const MainLayout = (props) => {
 
     return(
         <div className={clsx(classes.root, classes.content,isDrawerOpen ? classes.contentShift : null)}>
-            {props.children}
+            <Container>
+                {props.children}
+            </Container>
             <ToastContainer/>
         </div>
     )

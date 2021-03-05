@@ -32,7 +32,7 @@ export function userLogin({email, password, rememberMe}) {
                 password:password,
                 getToken: rememberMe,
             })
-            console.log("user",response);
+            // console.log("user",response);
             tokenHandling.saveToken(response.data.data.token)
             if (response){
                 dispatch(userAction.userLogin({data: response.data, auth: true}))

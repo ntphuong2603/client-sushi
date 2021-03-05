@@ -46,9 +46,9 @@ export const userLogin = (values) => ({
     payload: values,
 })
 
-export const userLogout = (values) => ({
+export const userLogout = () => ({
     type: USER_ACTIONS.LOGOUT,
-    payload: values,
+    // payload: values,
 })
 
 export const userAuthenticate = (values) => ({

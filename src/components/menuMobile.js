@@ -1,10 +1,26 @@
 import React, { useState } from 'react'
-import { Button, IconButton, Popover } from '@material-ui/core'
+import { IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles, Popover } from '@material-ui/core'
 import { MENU_BAR, MENU_ICON } from '../constant/drawerMenu'
-import { LinkContainer } from 'react-router-bootstrap'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import {Link as RouterLink} from 'react-router-dom'
+import { getSentenceCase } from '../tools/stringFunc'
+
+const styles = makeStyles((theme)=>({
+    hoverButton:{
+        '&:hover':{
+            color: 'white',
+            backgroundColor:'#3f51b5'
+        }
+    },
+    hoverProfile:{
+        '&:hover':{
+            color: 'white',
+            backgroundColor:'#3f51b5'
+        }
+    }
+}))
 
 const MenuMobile = () => {
     const [anchorEle, setAnchorEle] = useState(null)
@@ -30,19 +46,15 @@ const MenuMobile = () => {
             horizontal: 'right',
         }
     })
+    
+    const classes = styles()
 
-    const getActiveButton = (menu) => (
-        menu==='test' ? 
-        { color: 'secondary', variant: 'contained' }
-        :
-        { color: 'inherit', variant: 'text' }
-    )
     return(
         <>
-        <IconButton color="inherit">
+        <IconButton color="inherit" component={RouterLink} to="/orders" className={classes.hoverProfile}>
             <NotificationsIcon/>
         </IconButton>
-        <IconButton color="inherit">
+        <IconButton color="inherit" component={RouterLink} to="/profile" className={classes.hoverProfile}>
             <AccountCircleIcon/>
         </IconButton>
         <IconButton color="inherit" aria-describedby={menuID} onClick={event=>handleMenuMobile(event)}>
@@ -55,19 +67,14 @@ const MenuMobile = () => {
             onClose={()=>{handleMenuMobile()}}
             {...getPopoverPosition()}
             >
-            {MENU_BAR.map((menu,index)=>(
-                <div key={menu}>
-                    <LinkContainer to={`/${menu}`}>
-                        <Button {...getActiveButton(menu)} 
-                            // className={classes.btn}
-                            startIcon={MENU_ICON[index]}
-                            onClick={()=>{handleMenuMobile()}}
-                            >
-                            { menu }
-                        </Button>
-                    </LinkContainer>
-                </div>
-            ))}
+            <List>
+                {MENU_BAR.map((menu,index)=>(
+                    <ListItem key={menu} button component={RouterLink} to={`/${menu}`} className={classes.hoverButton} onClick={()=>{handleMenuMobile()}}>
+                        <ListItemIcon>{MENU_ICON[index]}</ListItemIcon>
+                        <ListItemText>{getSentenceCase(menu)}</ListItemText>
+                    </ListItem>
+                ))}
+            </List>
         </Popover>
         </>
     )
