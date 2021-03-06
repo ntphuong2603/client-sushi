@@ -1,10 +1,11 @@
 import React from 'react'
+import GridGatogory from './gridList'
 
 const Home = () => {
     return(
-        <div>
-            Home component.
-        </div>
+        <>
+            <GridGatogory/>
+        </>
     )
 }
 

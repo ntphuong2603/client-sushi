@@ -1,4 +1,4 @@
-import { MENU_ACTIONS, NOTIFICATION_ACTIONS, SITE_ACTIONS, USER_ACTIONS } from "../actionTypes";
+import { CATEGORY_ACTIONS, MENU_ACTIONS, NOTIFICATION_ACTIONS, SITE_ACTIONS, USER_ACTIONS } from "../actionTypes";
 
 ///////////////////////// - Drawer actions - /////////////////////////
 export const handleDrawer = (isDrawerOpen) => ({
@@ -53,6 +53,23 @@ export const userLogout = () => ({
 
 export const userAuthenticate = (values) => ({
     type: USER_ACTIONS.AUTH,
+    payload: values,
+})
+
+///////////////////////// - Category actions - /////////////////////////
+export const getAllCategories = (values) => ({
+    type: CATEGORY_ACTIONS.GET_ALL,
+    payload: values,
+})
+
+export const getCategoryByID = (values) => ({
+    type: CATEGORY_ACTIONS.GET_BY_ID,
+    payload: values,
+})
+
+
+export const deleteCategoryByID = (values) => ({
+    type: CATEGORY_ACTIONS.DELETE_BY_ID,
     payload: values,
 })
 

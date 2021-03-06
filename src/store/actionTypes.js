@@ -24,3 +24,9 @@ export const MENU_ACTIONS = {
     UPDATE_MENU:"update_menu",
     DELETE_MENU:"delete_menu",
 }
+
+export const CATEGORY_ACTIONS = {
+    GET_ALL : "get_all_categories",
+    GET_BY_ID: "get_category_by_id",
+    DELETE_BY_ID:"delete_category_by_id",
+}
