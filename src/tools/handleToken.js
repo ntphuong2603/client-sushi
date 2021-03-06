@@ -1,3 +1,5 @@
+import cookie from 'react-cookies'
+
 export function saveToken(values){
     window.localStorage.setItem("name",values.name)
     window.localStorage.setItem("value",values.value)
@@ -25,5 +27,12 @@ export function getHeader(tokenName){
     // const tokenValue = getToken(tokenName)
     return {headers:{
         [tokenName]: getToken(tokenName)
+    }}
+}
+
+export function getHeader_Cookie(tokenName){
+    // const tokenValue = getToken(tokenName)
+    return {headers:{
+        [tokenName]: cookie.load(tokenName)
     }}
 }
