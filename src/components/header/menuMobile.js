@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles, Popover } from '@material-ui/core'
-import { MENU_BAR, MENU_ICON } from '../constant/drawerMenu'
+import { MENU_BAR, MENU_ICON } from '../../constant/drawerMenu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import MenuIcon from '@material-ui/icons/Menu'
 import {Link as RouterLink} from 'react-router-dom'
-import { getSentenceCase } from '../tools/stringFunc'
+import { getSentenceCase } from '../../tools/stringFunc'
 
 const styles = makeStyles((theme)=>({
     hoverButton:{

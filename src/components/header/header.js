@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppBar, Backdrop, Button, CircularProgress, makeStyles, Toolbar, Typography } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
-import LogoutDialog from './dialog/logoutDialog'
-import LoginDialog from './dialog/loginDialog'
+import LogoutDialog from '../dialog/logoutDialog'
+import LoginDialog from '../dialog/loginDialog'
 import MenuMobile from './menuMobile'
-import { userAuthenticate } from '../store/actions/user-action'
+import { userAuthenticate } from '../../store/actions/user-action'
 
 const Header = (props) => {
     const [openDialog, setOpenDialog] = useState(false)

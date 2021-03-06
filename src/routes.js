@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import GoogleFontLoader from 'react-google-font-loader'
-import Header from './components/header'
+import Header from './components/header/header'
 import Home from './components/home'
 import MainLayout from './components/hoc/mainLayout'
 // import Login from './components/login'
