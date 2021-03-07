@@ -7,9 +7,9 @@ const MENU_URL = 'http://localhost:5000/api/menus'
 export function getAllMenus() {
     return async(dispatch)=>{
         try {
-            const menus = await axios.get(`${MENU_URL}/readAll`)
-            if (menus){
-                dispatch(menuAction.getAllMenus(menus.data.data))
+            const {data} = await axios.get(`${MENU_URL}/readAll`)
+            if (data.success){
+                dispatch(menuAction.getAllMenus(data.data))
                 // dispatch(menuAction.successNotification())
             } 
         } catch (error){
