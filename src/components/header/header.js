@@ -57,7 +57,7 @@ const Header = (props) => {
                     {auth ? 
                         <MenuMobile openDialog={openDialog} setOpenDialog={setOpenDialog}/>
                     :
-                        <Button color="inherit" onClick={()=>setOpenDialog(!openDialog)}>Login</Button>
+                        <Button disabled={showBackdrop} color="inherit" onClick={()=>setOpenDialog(!openDialog)}>Login</Button>
                     }
                 </Toolbar>
             </AppBar>

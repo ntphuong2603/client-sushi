@@ -20,50 +20,19 @@ export function getAllMenus() {
     }
 }
 
-// export function userLogin({email, password, rememberMe}) {
-//     return async(dispatch)=>{
-//         try {
-//             // console.log(email, password, rememberMe);
-//             const response = await axios.post(`${MENU_URL}/login`,{
-//                 email:email,
-//                 password:password,
-//                 getToken: rememberMe,
-//             })
-//             // console.log("user",response);
-//             tokenHandling.saveToken(response.data.data.token)
-//             if (response){
-//                 dispatch(menuAction.userLogin({data: response.data, auth: true}))
-//                 dispatch(menuAction.successNotification("Login successfully"))
-//             }
-//         } catch (error){
-//             console.log(error);
-//             dispatch(menuAction.errorNotification())
-//         }
-//     }
-// }
-
-// export function userLogout(props) {
-//     return async(dispatch)=>{
-//         try {
-//             //clear token in localStorage
-//             tokenHandling.removeToken("my-access-token")
-//             dispatch(menuAction.userLogout())
-//             dispatch(menuAction.closeDrawer())
-//             dispatch(menuAction.infoNotification('Logout successfully'))
-//             //return to homepage
-//             props.history.push('/')
-//         } catch (error){
-//             dispatch(menuAction.errorNotification(""))
-//         }
-//     }
-// }
-
-// export function userAuthenticate({token}) {
-//     return async(dispatch, getState)=>{
-//         try {
-//             //get token from localStorage
-//         } catch (error){
-            
-//         }
-//     }
-// }
+export function deleteMenu(values){
+    return async(dispatch)=>{
+        try {
+            const {data} = await axios.post(`${MENU_URL}/delete`,{
+                menuID: values.menuID,
+                userID: values.userID,
+            })
+            if (data.success){
+                dispatch(menuAction.deleteMenu(data.data))
+            }
+        } catch (error){
+            console.log(error.response.data.message);
+            dispatch(menuAction.errorNotification(error.response.data.message))
+        }
+    }
+}
