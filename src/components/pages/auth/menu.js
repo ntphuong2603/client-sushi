@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { userAuthenticate } from '../store/actions/user-action'
-import * as categoryAction from '../store/actions/category-action'
-import * as menuAction from '../store/actions/menu-action'
+import { userAuthenticate } from '../../../store/actions/user-action'
+import * as categoryAction from '../../../store/actions/category-action'
+import * as menuAction from '../../../store/actions/menu-action'
 import { Paper, TablePagination } from '@material-ui/core'
 import TableMenu from './tableMenu'
 

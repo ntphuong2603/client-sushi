@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GridList, GridListTile, GridListTileBar, IconButton, makeStyles } from '@material-ui/core'
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import * as menuAction from '../store/actions/menu-action'
+import * as menuAction from '../../../store/actions/menu-action'
 
 const styles = makeStyles((theme) => ({
     root: {

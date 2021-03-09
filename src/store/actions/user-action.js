@@ -61,6 +61,10 @@ export function userLogout() {
 export function userAuthenticate() {
     return async(dispatch)=>{
         try {
+            const token = tokenHandling.getToken("my-access-token")
+            if (!token){
+                throw new Error()
+            }
             const headers = tokenHandling.getHeader("my-access-token") 
             const {data} = await axios.get(`${USER_URL}/isUserAuthenticate`, headers)
             if (data.error){

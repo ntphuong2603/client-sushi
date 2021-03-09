@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-const AuthRoute = ({component:Component, ...rest}) => {
+const AuthComponent = (Component, roleCheck=false) => {
     const {auth} = useSelector(state=>state.users)
-    // console.log('AuthRoute:',rest.path, auth);
-    // const param = {...rest, path:`/${rest.path}`}
-    if (auth){
-        return <Component {...rest}/>
+    const [isAuth, setIsAuth] = useState(false)
+
+    if (isAuth){
+        return(
+            <Component/>
+        )
+    } else {
+        return(
+            <Redirect to="/"/>
+        )
     }
-    return <Redirect to="/"/>
 }
 
-export default AuthRoute;
+export default AuthComponent;
